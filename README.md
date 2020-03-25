@@ -61,8 +61,9 @@ Things you may want to cover:
 - has_many :users_members
 - has_many :users, though: :users_members
 - has_many :ancestors
-- belongs_to : family
+- has_many : familyes
 - belongs_to : address
+- belomgs_to : request
 
 
 ## familyesテーブル
@@ -98,6 +99,20 @@ Things you may want to cover:
 |name|string|null: false,index: true|
 |kaimyou|text|null: false|
 |deceased|date|null: false|
+|member|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to : member
+
+
+## requestsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|spring|varchar|null: false|
+|summer|varchar|null: false|
+|autumn|varchar|null: false|
+|winter|varchar|null: false|
 |member|references|null: false, foreign_key: true|
 
 ### Association
