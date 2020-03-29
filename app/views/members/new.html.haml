@@ -2,25 +2,49 @@
   %h1 会員登録
   .new_member
     = form_for @member do |f|
-      = f.label :name, "名前"
-      = f.text_field :name, class: "member-form__name", placeholder: "名前を入力してください"
-      %br/
-      = f.label :tel, "電話番号"
-      = f.text_field :tel, class: "member-form__tel", placeholder: "電話番号を入力してください"
-      %br/
-      = f.label :birthday, "誕生日"
-      = f.date_select :birthday, class: "member-form__birthday", use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
-      %br/
-      = f.label :postcode, "郵便番号"
-      = f.text_field :postcode, class: "member-form__postcode", placeholder: "郵便番号を入力してください"
-      %br/
-      = f.label :city, "都道府県"
-      = f.text_field :city, class: "member-form__city", placeholder:"都道府県を入力してください"
-      %br/
-      = f.label :block, "市町村"
-      = f.text_field :block, class: "member-form__block", placeholder:"市町村を入力してください"
-      %br/
-      = f.label :building, "番地"
-      = f.text_field :building, class: "member-form__building", placeholder:"番地を入力してください"
-      %br/
-      = f.submit "次の項目へ", class: "member-form__action-btn"
+      .new_member__field
+        .new_member__field--left
+          = f.label :name, "名前"
+        .new_member__field--right
+          = f.text_field :name, class: "member-form__name", placeholder: "名前を入力してください"
+
+      .new_member__field.clearfix
+        .new_member__field--left
+          = f.label :tel, "電話番号"
+        .new_member__field--right
+          = f.text_field :tel, class: "member-form__tel", placeholder: "電話番号を入力してください"
+
+      .new_member__field.clearfix
+        .new_member__field--left
+          = f.label :birthday, "誕生日"
+        .new_member__field--right
+          = f.date_select :birthday, class: "member-form__birthday", use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
+
+      .new_member__field.clearfix
+        .new_member__field--left
+          = f.label :postcode, "郵便番号"
+        .new_member__field--right
+          = f.text_field :postcode, class: "member-form__postcode", placeholder: "郵便番号を入力してください"
+
+      .new_member__field.clearfix
+        .new_member__field--left
+          = f.label :city, "都道府県"
+        .new_member__field--right
+          = f.text_field :city, class: "member-form__city", placeholder:"都道府県を入力してください"
+      
+      .new_member__field.clearfix
+        .new_member__field--left
+          = f.label :block, "市町村"
+        .new_member__field--right
+          = f.text_field :block, class: "member-form__block", placeholder:"市町村を入力してください"
+
+      .new_member__field.clearfix
+        .new_member__field--left
+          = f.label :building, "番地"
+        .new_member__field--right
+          = f.text_field :building, class: "member-form__building", placeholder:"番地を入力してください"
+      
+      .new_member__field.clearfix
+        .new_member__field--left
+          = f.submit "次の項目へ", class: "member-form__action-btn"
+        .new_member__field--right
