@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_121623) do
+ActiveRecord::Schema.define(version: 2020_03_28_064619) do
+
+  create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "tel", limit: 11, null: false
+    t.date "birthday", null: false
+    t.string "postcode", limit: 8, null: false
+    t.string "city", null: false
+    t.string "block", null: false
+    t.string "building", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_members_on_name", unique: true
+  end
+
+  create_table "user_members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_user_members_on_member_id"
+    t.index ["user_id"], name: "index_user_members_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -26,4 +48,6 @@ ActiveRecord::Schema.define(version: 2020_03_26_121623) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_members", "members"
+  add_foreign_key "user_members", "users"
 end
