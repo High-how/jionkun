@@ -7,5 +7,17 @@ class MembersController < ApplicationController
   end
 
   def create
+    @member = Member.new(member_params)
+    if @member.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
+
+  private
+  def member_params
+    params.require(:member).permit(:name, :tel, :birthday, :postcode, :city, :block, :building)
+  end
+
 end
